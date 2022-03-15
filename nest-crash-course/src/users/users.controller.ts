@@ -12,6 +12,7 @@ import {
 import { CreateUserDto } from './dto/create-user.dto';
 import { User } from './entities/user.entity';
 import {
+  ApiBadRequestResponse,
   ApiCreatedResponse,
   ApiNotFoundResponse,
   ApiOkResponse,
@@ -32,7 +33,7 @@ export class UsersController {
   }
 
   @ApiOkResponse({ type: User, description: 'the user' })
-  @ApiNotFoundResponse() //Error documented
+  @ApiNotFoundResponse() //documentation for API response
   @Get(':id')
   getUsersById(@Param('id', ParseIntPipe) id: number): User {
     // auto parse ID
@@ -47,6 +48,7 @@ export class UsersController {
   }
 
   @ApiCreatedResponse({ type: User })
+  @ApiNotFoundResponse() //documentation for API response
   @Post()
   createUser(@Body() body: CreateUserDto): User {
     return this.usersService.createUser(body);
