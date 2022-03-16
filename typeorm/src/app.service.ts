@@ -28,6 +28,14 @@ export class AppService {
     return this.usersRepository.save(newUser); //INSERT
   }
 
+  async updateUser(id: number, name: string): Promise<User> {
+    const user = await this.getOneById(id);
+
+    user.name = name;
+
+    return this.usersRepository.save(user); //UPDATE
+  }
+
   getHello(): string {
     return 'Hello World!';
   }
