@@ -24,6 +24,7 @@ export class AppService {
   }
 
   createUser(name: string): Promise<User> {
+    //Or:  .insert
     const newUser = this.usersRepository.create({ name }); // const newUser = new User() ; newUser.name = name;
     return this.usersRepository.save(newUser); //INSERT
   }
@@ -39,6 +40,7 @@ export class AppService {
   async deleteUser(id: number): Promise<User> {
     const user = await this.getOneById(id);
 
+    //Or:  .delete
     return this.usersRepository.remove(user);
   }
 

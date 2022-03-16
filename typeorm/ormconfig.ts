@@ -4,7 +4,7 @@ const config: SqliteConnectionOptions = {
   type: 'sqlite',
   database: 'db',
   entities: ['dist/src/**/*.entity.js'],
-  synchronize: false, //True is automatically update DataBase
+  synchronize: true, //True is automatically update DataBase
   //Option false is manuel update DataBase:
   //TODO
   //Add typeorm command under scripts section in package.json:
