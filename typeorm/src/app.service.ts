@@ -23,6 +23,11 @@ export class AppService {
     }
   }
 
+  createUser(name: string): Promise<User> {
+    const newUser = this.usersRepository.create({ name }); // const newUser = new User() ; newUser.name = name;
+    return this.usersRepository.save(newUser); //INSERT
+  }
+
   getHello(): string {
     return 'Hello World!';
   }
